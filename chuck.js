@@ -1,5 +1,14 @@
+document.getElementById('get-joke').addEventListener('click',getRandomJoke);
 
-let getRandomJoke = (e) => {
+
+
+
+
+
+
+
+
+function getRandomJoke (e)  {
   e.preventDefault();
     const xhr = new XMLHttpRequest();
     xhr.open('GET','http://api.icndb.com/jokes/random',true);
@@ -8,18 +17,12 @@ let getRandomJoke = (e) => {
       if(this.status === 200){
           const joke = JSON.parse(this.responseText);
           displayJoke(joke.value.joke);
-          
-          
+                
       }
 
     }
     xhr.send();
 }
-
-
-
-document.getElementById('get-joke').addEventListener('click',getRandomJoke);
-
 
 
 function displayJoke(joke){
