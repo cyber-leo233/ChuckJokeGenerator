@@ -1,5 +1,6 @@
 
-let getRandomJoke = () => {
+let getRandomJoke = (e) => {
+  e.preventDefault();
     const xhr = new XMLHttpRequest();
     xhr.open('GET','http://api.icndb.com/jokes/random',true);
 
