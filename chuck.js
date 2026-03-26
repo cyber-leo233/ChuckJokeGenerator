@@ -1,32 +1,22 @@
-document.getElementById('get-joke').addEventListener('click',getRandomJoke);
 
+document.getElementById('get-joke').addEventListener('click', getRandomJoke);
 
-
-
-
-
-
-
-
-function getRandomJoke (e)  {
+function getRandomJoke(e) {
   e.preventDefault();
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET',"https://api.chucknorris.io/jokes/random",true);
 
-    xhr.onload = function () {
-      if(this.status === 200){
-          const joke = JSON.parse(this.responseText);
-          displayJoke(joke.value.joke);
-                
-      }
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.chucknorris.io/jokes/random', true);
 
+  xhr.onload = function () {
+    if (this.status === 200) {
+      const joke = JSON.parse(this.responseText);
+      displayJoke(joke.value);
     }
-    xhr.send();
+  }
+
+  xhr.send();
 }
 
-
-function displayJoke(joke){
-      document.getElementById('output').innerHTML = `<strong>${joke}</strong>`
+function displayJoke(joke) {
+  document.getElementById('output').innerHTML = `<strong>${joke}</strong>`;
 }
-
-
